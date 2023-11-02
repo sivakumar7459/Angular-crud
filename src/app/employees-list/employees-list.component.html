@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="container my-4">
+    <h1 class="mb-3 text-center">Employees</h1>
+    <table class="table table-success table-striped" *ngIf="employee">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employees of employee;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{employees.id}}</td>
+                <td>{{employees.name}}</td>
+                <td>{{employees.email}}</td>
+                <td>{{employees.phone}}</td>
+                <td>{{employees.salary}}</td>
+                <td><a [routerLink]="['/edit-employees',employees.id]" class="btn btn-secondary"><i
+                            class="bi bi-pencil-square"></i></a>&nbsp;&nbsp;
+                    <button type="button" class="btn btn-danger" (click)="remove(employees.id)"><i
+                            class="bi bi-trash3-fill"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="!employee">No Employees Found</p>
+</div>
